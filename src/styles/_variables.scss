@@ -1,0 +1,28 @@
+@charset "UTF-8";
+// Your variable
+$darken_white_color: #fafbfe;
+$dark_color: #656565;
+$darken_color: #212121;
+$primary_color: $dark_color !default;
+$tab_background_color: #ffc107 !default;
+$sidebar-width: 20vw !default;
+$header_height: 60px;
+$transition-layout: 0.3s ease;
+
+$transition-noti: 0.15s ease;
+
+$body_background: #F2F2F2;
+
+$link_color: #0054a5;
+// Bootstrap variable overrides
+$body-bg: $body_background !important;
+
+$border_group_input_color: #9ba0a5;
+$text_in_border_color: #3399cc;
+
+$viettel_dark_green: #00918d;
+
+$viettel_text: #41bebb;
+
+//header
+$header_text_color : #212529;

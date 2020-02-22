@@ -1,0 +1,115 @@
+html {
+  height: 100%;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  ol {
+    list-style-type: none;
+  }
+}
+body {
+  background: $body_background;
+}
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+// @media (min-width: 1200px) {
+//   .container {
+//     max-width: 80%;
+//   }
+// }
+
+.custom-header{
+  .wrapper{
+    background: url("../assets/img/bg3.jpg") no-repeat center center; 
+    margin-bottom: 50px;
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    background-size: cover;
+    height: 540px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.5;
+}
+.subheading{
+    font-size: 24px;
+    font-weight: 350;
+    line-height: 1.3;
+    display: block;
+    margin: 10px 0 0;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.page-heading{
+  color: white;
+  padding: 200px 0 0;
+  h1{
+    font-size: 50px;
+  }
+}
+  @media only screen and (min-width: 768px){
+      .page-heading, .post-heading, .site-heading {
+          padding: 200px 0 0 0;
+      }
+      .page-heading h1{
+          font-size: 80px;
+      }
+  }
+  .navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+  #mainNav .navbar-brand {
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 800;
+  }
+  @media (min-width: 992px){
+    .navbar-expand-lg .navbar-collapse {
+      display: -ms-flexbox!important;
+      display: flex!important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  }
+  .navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  #mainNav .navbar-nav>li.nav-item>a {
+    padding: 10px 20px;
+    color: #fff;
+  }
+}
+  #mainNav .navbar-nav>li.nav-item>a {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  #mainNav {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+
+.main-container {
+  .main-content {
+    height: 100%;
+  }
+}
