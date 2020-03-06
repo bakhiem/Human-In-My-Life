@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const jwt = require('jsonwebtoken');
 try {
   require("./config.json");
 } catch (err) {
@@ -19,17 +20,17 @@ const userRouter = require("./modules/api/user/route");
 
 const authRouter = require("./modules/api/auth/route");
 //deploy secure is true
-app.use(
-  session({
-    secret: config.sessionSecret,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: config.secureCookie,
-      maxAge: 12 * 60 * 60 * 1000
-    }
-  })
-);
+// app.use(
+//   session({
+//     secret: config.sessionSecret,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       secure: config.secureCookie,
+//       maxAge: 12 * 60 * 60 * 1000
+//     }
+//   })
+// );
 
 app.use((req, res, next) => {
   res.setHeader("X-Frame-Options", "ALLOWALL");
@@ -37,7 +38,7 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "POST, GET, PUT, DELETE, OPTIONS"
   );
-  const acceptedOrigins = ['http://localhost:4200','http://localhost:6969']
+  const acceptedOrigins = ['http://localhost:8080','http://localhost:6969']
   if (req.headers.origin && acceptedOrigins.includes(req.headers.origin)) {
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
   }

@@ -4,6 +4,7 @@ const router = express.Router();
 const postController = require("./controller");
 
 const authMiddleware = require('../auth/auth');
+const checkToken = require('../middleware/check-token')
 router.get("/posts/:page", (req, res) => {
     postController
     .getAllPosts(req.params.page || 1)
@@ -97,8 +98,7 @@ router.get("/author/:author/:page", (req, res) => {
   });
 });
 
-router.post("/",authMiddleware.authorize, (req, res) => {
-
+router.post("/",checkToken.checkToken, (req, res) => {
     let post = JSON.parse(req.query.post);
    // let post = req.body;
     post.createdBy = req.session.userInfo.username;
@@ -113,7 +113,7 @@ router.post("/",authMiddleware.authorize, (req, res) => {
       });
   });
 
-  router.put("/:id",authMiddleware.authorize, (req, res) => {
+  router.put("/:id",checkToken.checkToken, (req, res) => {
     let post = JSON.parse(req.query.post);
     postController
       .updatePost(post.title,post.content,post.type,post.img,post.sortContent)

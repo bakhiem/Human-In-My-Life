@@ -1,5 +1,7 @@
 const bcrypt = require("bcryptjs");
 const userController = require("../user/controller");
+const jwt = require('jsonwebtoken');
+let config = require("../../../config.json");
 
 const login = ({ username, password }) =>
   new Promise((resolve, reject) => {
@@ -8,34 +10,47 @@ const login = ({ username, password }) =>
       .then(user => {
         if (!user || !user.password) {
           reject({
-            status: 400,
-            err: "Incorrect username"
+            status: 403,
+            message: "Incorrect username"
           });
         } else {
           bcrypt
             .compare(password, user.password)
             .then(result => {
               if (result) {
-                resolve({ username: user.username, id: user._id });
+                let token = jwt.sign({username: username},
+                  config.secret,
+                  { expiresIn: '10000h' // expires in 10000 hours
+                  }
+                );
+                resolve({ 
+                  status : 200,
+                  data : {
+                    username: user.username, 
+                    role: 'ADMIN', 
+                    token: token 
+                  },
+                  message: 'Authentication successful!'
+                });
               } else {
                 reject({
-                  status: 400,
-                  err: "Incorrect password"
+                  status: 403,
+                  message: "Incorrect password"
                 });
               }
             })
             .catch(err =>
               reject({
-                status: 501,
-                err: err
+                status: 400,
+                message: 'Authentication failed! Please check the request'
               })
             );
         }
       })
       .catch(err =>
         reject({
-          status: 501,
-          err: err
+          status: 400,
+          message: 'Authentication failed! Please check the request'
         })
       );
   });

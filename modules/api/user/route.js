@@ -16,15 +16,15 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
-  userController
-    .createUser(req.body)
-    .then(id => res.send(id))
-    .catch(err => {
-      console.error(err);
-      res.status(500).send(err);
-    });
-});
+// router.post("/", (req, res) => {
+//   userController
+//     .createUser(req.body)
+//     .then(id => res.send(id))
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).send(err);
+//     });
+// });
 
 router.get("/:id", (req, res) => {
   userController
